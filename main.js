@@ -10,8 +10,41 @@ let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
 let roomId = urlParams.get("room");
 
+function makeid(length) {
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
+// TODO here we should handle the room id
 if (!roomId) {
-  window.location = "lobby.html";
+  let inviteCode = makeid(5);
+  fetch("http://daarolquran.com/back_request/insert_request", {
+    method: "POST",
+    body: JSON.stringify({
+      table: "meets",
+      method_type: "meet_code",
+      data: {
+        meet_code: inviteCode,
+      },
+    }),
+    headers: {
+      "content-type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      window.location = `index.html?room=${inviteCode}`;
+    })
+    .catch((error) => console.error("Error:", error));
 }
 
 let localStream;
