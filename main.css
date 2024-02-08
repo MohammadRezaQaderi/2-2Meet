@@ -5,9 +5,7 @@
 }
 
 #videos {
-  display: grid;
-  grid-template-columns: 1fr;
-  height: 100vh;
+  height: 10%;
   overflow: hidden;
 }
 
@@ -16,6 +14,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 #user-2 {
@@ -29,7 +28,7 @@
   height: 170px;
   width: 300px;
   border-radius: 5px;
-  border: 2px solid #b366f9;
+  border: 2px solid #535353;
   -webkit-box-shadow: 3px 3px 15px -1px rgba(0, 0, 0, 0.77);
   box-shadow: 3px 3px 15px -1px rgba(0, 0, 0, 0.77);
   z-index: 999;
@@ -45,7 +44,7 @@
 }
 
 .control-container {
-  background-color: rgb(179, 102, 249, 0.9);
+  background-color: #535353;
   padding: 20px;
   border-radius: 50%;
   display: flex;
