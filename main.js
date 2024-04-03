@@ -42,7 +42,7 @@ if (!roomId) {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      window.location = `index.html?room=${inviteCode}`;
+      window.location = `meet.html?room=${inviteCode}`;
     })
     .catch((error) => console.error("Error:", error));
 }
